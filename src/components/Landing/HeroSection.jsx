@@ -2,6 +2,8 @@ import img1 from "../../assets/img/img1.png";
 import img2 from "../../assets/img/img2.png";
 import img3 from "../../assets/img/img3.png";
 import img4 from "../../assets/img/img4.png";
+import { IoCallOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => (
   <div className="relative overflow-hidden bg-white">
@@ -22,9 +24,11 @@ const HeroSection = () => (
           </p>
           
           
-          <button className="mt-6 bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-amber-200">
-            📞 Free 30-minute Consultation Call
-          </button>
+          <Link
+          to="/appointmentForm"
+           className="mt-6 bg-amber-600 items-center gap-2 flex w-1/2 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-amber-100">
+            <span className="text-2xl"><IoCallOutline/></span>  Free 30-minute Consultation Call
+          </Link>
         </div>
 
        <div className="w-1/2 flex relative justify-center">

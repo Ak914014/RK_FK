@@ -2,7 +2,8 @@ import img4 from "../../assets/img/background.jpg";
 import paper from "../../assets/img/paper.png";
 import img from "../../assets/img/background.svg";
 import ServicesSection from "../ServicesSection";
-
+import { IoCallOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const HeroBanner = () => {
   return (
     <div className="w-full  pb-24 mt-15">
@@ -23,19 +24,29 @@ const HeroBanner = () => {
           </p>
           {/* CTA Button */}
           <div className="mt-6">
-            <button className="mt-6 bg-amber-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg">
-              📞 Free 30-minute Consultation Call
-            </button>
+            <Link
+              to="/appointmentForm"
+              className="mt-6 bg-amber-600 items-center gap-2 flex w-1/3 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-amber-200"
+            >
+              <span className="text-2xl">
+                <IoCallOutline />
+              </span>{" "}
+              Free 30-minute Consultation Call
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="relative w-full mb-100 h-[80vh] flex items-center justify-center bg-cover bg-center bg-no-repeat py-16 px-6">
-        <img src={img} alt="" className=" absolute w-full mt-63" />
+      <section className="relative w-full mb-100 h-[80vh] gap-20 flex items-center justify-center  bg-cover bg-center bg-no-repeat  px-6">
+        <img
+          src={img}
+          alt=""
+          className=" absolute w-full  bg-cover bg-center bg-no-repeat mt-56"
+        />
         {/* Semi-transparent overlay */}
         <div className="absolute inset-0 bg-white/30 z-0"></div>
 
-        <div className="relative z-10 mt-40 max-w-6xl">
+        <div className="relative z-10 mt-80 max-w-6xl">
           <h2 className="text-3xl font-semibold  mb-12 text-[#ED6308]">
             Why Choose Us?
           </h2>
@@ -62,8 +73,8 @@ const HeroBanner = () => {
               </button>
             </div>
             <div className="w-1/2">
-              <div className=" h-80">
-                <img src={paper} className="" alt="" />
+              <div className=" ">
+                <img src={paper} className="h-[90vh]" alt="" />
               </div>
             </div>
           </div>

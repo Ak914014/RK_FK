@@ -1,4 +1,6 @@
 import meet_img from "../../assets/img/meet_img.png";
+import { IoCallOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const AboutSection = () => (
   <section className="bg-[#FFFCF3] px-20 rounded-4xl py-4 flex flex-col md:flex-row gap-10 items-center">
@@ -14,9 +16,11 @@ const AboutSection = () => (
         crafting compelling narratives or highlighting overlooked
         achievements, Rubina knows how to make every word count.
       </p>
-      <button className="bg-orange-500 text-white px-6 py-2 rounded-4xl text-sm hover:bg-orange-600">
-        📞 Free 30-minute Consultation Call
-      </button>
+       <Link
+          to="/appointmentForm"
+           className="mt-6 bg-amber-600 items-center gap-2 flex w-1/2 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-amber-200">
+            <span className="text-2xl"><IoCallOutline/></span>  Free 30-minute Consultation Call
+          </Link>
     </div>
     <div className="md:w-1/2 flex justify-center">
       <img src={meet_img} alt="Rubina" className="w-80 rounded-xl" />

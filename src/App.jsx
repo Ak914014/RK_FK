@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Pricing from "./components/Pricing"; // Create this new component
 import Navbar from './components/Navbar';
 import HeroBanner from './components/Layouts/HeroBanner';
+import AppointmentForm from './components/AppointmentForm';
 
 function App() {
   return (
@@ -30,19 +31,25 @@ function App() {
         } />
          <Route path="/graduate" element={
           <>
-            <LandingPage />
+            <HeroBanner />
             <Footer />
           </>
         } />
         <Route path="/mba" element={
           <>
-            <LandingPage />
+           <HeroBanner />
+            <Footer />
+          </>
+        } />
+        <Route path="/appointmentForm" element={
+          <>
+           <AppointmentForm />
             <Footer />
           </>
         } />
         <Route path="/medical" element={
           <>
-            <LandingPage />
+           <HeroBanner />
             <Footer />
           </>
         } />

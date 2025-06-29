@@ -35,7 +35,7 @@ const Navbar = () => {
           </button>
         </nav>
       </header>
-      <nav className="flex mx-20 text-[#6B7280] justify-around gap-4 items-center relative border-b-4 border-gray-300">
+      <nav className="flex mx-20 0  text-[#6B7280] justify-around gap-4 items-center relative border-b-4 border-gray-300">
         {navItems.map((item, index) => (
           <div 
             key={index} 

@@ -16,8 +16,6 @@ const LandingPage = () => {
       <FeaturesSection />
       <ServicesSection />
       <TestimonialsSection />
-
-      <HeroBanner/>
     </div>
   );
 };

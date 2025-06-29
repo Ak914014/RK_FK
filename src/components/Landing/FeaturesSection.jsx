@@ -1,5 +1,6 @@
 import img from "../../assets/img.svg";
-
+import { IoCallOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const FeaturesSection = () => (
   <section className="px-20 py-12">
     <h3 className="text-3xl text-[#171412] font-semibold mb-6">
@@ -53,9 +54,11 @@ const FeaturesSection = () => (
       ))}
     </div>
     <div className="w-full flex py-10 justify-center">
-      <button className="bg-orange-500 text-white px-6 py-2 rounded-4xl text-sm hover:bg-orange-600">
-        📞 Free 30-minute Consultation Call
-      </button>
+           <Link
+          to="/appointmentForm"
+           className="mt-6 bg-amber-600 items-center gap-2 flex w-1/ hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-amber-200">
+            <span className="text-2xl"><IoCallOutline/></span>  Free 30-minute Consultation Call
+          </Link>
     </div>
   </section>
 );
