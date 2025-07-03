@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Proofreading",
+    "description": "Correct grammar, spelling, punctuation, and syntax errors for a polished final draft.",
+     "icon": "GrEdit"
+  
+},
+  {
+    "icon": "MdOutlineQuestionMark",
+    "title": "Brainstorming",
+    "description": "Enhance clarity, coherence, and argumentation with insightful feedback on content and structure."
+  },
+  {
+    "icon": "IoSearchOutline",
+    "title": "Content Editing",
+    "description": "Enhance clarity, coherence, and argumentation with insightful feedback on content and structure."
+  },
+  {
+    "icon": "PiTextBBold",
+    "title": "Formatting",
+    "description": "Ensure your essay adheres to specific formatting guidelines (e.g., MLA, APA, Chicago)."
+  }
+]

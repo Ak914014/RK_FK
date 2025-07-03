@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Submit Your Essay",
+    "description": "Upload your essay and provide any specific instructions or requirements.",
+    "icon": "PiUpload"
+  },
+  {
+    "title": "Consultation Call",
+    "description": "To understand your unique needs, we arrange another call apart from the free 30-min Consultation call.",
+    "icon": "FiPhoneCall"
+  },
+  {
+    "title": "Editing and Feedback",
+    "description": "Our expert editors meticulously review your essay, providing detailed feedback and corrections.",
+    "icon": "CiEdit"
+  },
+  {
+    "title": "Receive Your Polished Essay",
+    "description": "Download your revised essay, ready for submission.",
+    "icon": "LuHardDriveDownload"
+  }
+]

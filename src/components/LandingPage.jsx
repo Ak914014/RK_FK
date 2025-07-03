@@ -9,7 +9,7 @@ import HeroBanner from "./Layouts/HeroBanner.jsx";
 
 const LandingPage = () => {
   return (
-    <div className="text-gray-800 p-4 bg-[#FFFFFF] font-sans">
+    <div className="text-gray-800  px-4 bg-[#FFFFFF] font-sans">
       <HeroSection />
       <TrustLogos />
       <AboutSection />

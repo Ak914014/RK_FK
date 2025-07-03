@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "quote": "RK Editing transformed my college essay from good to outstanding! I got into my dream school thanks to their expert feedback.",
+    "name": "Sarah Johnson",
+    "role": "Accepted to Harvard University",
+    "avatar": "https://randomuser.me/api/portraits/women/43.jpg"
+  },
+  {
+    "id": 2,
+    "quote": "The attention to detail and storytelling advice was invaluable. My personal statement truly reflected my authentic self.",
+    "name": "Michael Chen",
+    "role": "Accepted to Stanford Medical School",
+    "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    "id": 3,
+    "quote": "Working with RK Editing was the best investment I made in my graduate school applications. The feedback was incredibly thorough.",
+    "name": "David Rodriguez",
+    "role": "Accepted to MIT PhD Program",
+    "avatar": "https://randomuser.me/api/portraits/men/65.jpg"
+  },
+  {
+    "id": 4,
+    "quote": "My essay went from confusing and disjointed to clear and compelling. The editor understood exactly what admissions officers look for.",
+    "name": "Emily Wilson",
+    "role": "Accepted to Columbia Business School",
+    "avatar": "https://randomuser.me/api/portraits/women/68.jpg"
+  },
+  {
+    "id": 5,
+    "quote": "The editor helped me highlight aspects of my background I hadn't thought to include. My essay stood out from thousands of others.",
+    "name": "James Kim",
+    "role": "Accepted to Yale Law School",
+    "avatar": "https://randomuser.me/api/portraits/men/75.jpg"
+  },
+  {
+    "id": 6,
+    "quote": "I was skeptical at first, but the transformation in my essays was remarkable. Worth every penny for the personalized attention.",
+    "name": "Olivia Martinez",
+    "role": "Accepted to Princeton University",
+    "avatar": "https://randomuser.me/api/portraits/women/82.jpg"
+  }
+]
