@@ -158,14 +158,18 @@ const HeroBanner = () => {
                 </motion.p>
               ))}
               
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-gray-900 font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-md hover:shadow-lg"
-                variants={itemVariants}
-              >
-                View Sample
-              </motion.button>
+                <motion.div 
+            variants={itemVariants}
+            className="mt-6"
+          >
+            <Link
+              to="/appointmentForm"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-200/50"
+            >
+              <IoCallOutline className="text-2xl" />
+              Free 30-minute Consultation Call
+            </Link>
+          </motion.div>
             </motion.div>
 
             <motion.div 
