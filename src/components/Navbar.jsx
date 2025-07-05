@@ -124,7 +124,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                to="/"
+                to="/pricing"
                 className="bg-[#DC8931] hover:from-[#DC8931] hover:to-[#E5A000] text-white px-5 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg"
               >
                 Submit Essay
