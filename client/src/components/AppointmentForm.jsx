@@ -148,12 +148,12 @@ const AppointmentForm = () => {
         </div>
 
         <div className="flex gap-6 justify-start">
-          <button className="border border-orange-500 text-orange-500 px-6 py-2 rounded-full hover:bg-orange-100">
-            Back
-          </button>
           <button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600">
-            Continue
+            Submit
           </button>
+          {/* <button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600">
+            Continue
+          </button> */}
         </div>
       </div>
     </div>
