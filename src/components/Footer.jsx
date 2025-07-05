@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebook, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 import img3 from "../assets/img/img3.png";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   // Animation variants
   const containerVariants = {
@@ -71,13 +71,16 @@ const Footer = () => {
             >
               View Pricing
             </motion.button>
-            <motion.button 
+             <motion.div variants={itemVariants}>
+          <Link
+            to="/appointmentForm"
               className="bg-white hover:bg-gray-100 border border-gray-200 text-gray-800 px-8 py-4 text-lg md:text-xl rounded-2xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
             >
               Consultation Call
-            </motion.button>
+              </Link>
+        </motion.div>
           </motion.div>
         </div>
       </motion.div>
