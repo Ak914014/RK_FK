@@ -76,7 +76,7 @@ const Footer = () => {
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
             >
-              Get Essay Evaluated
+              Consultation Call
             </motion.button>
           </motion.div>
         </div>

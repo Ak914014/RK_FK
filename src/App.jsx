@@ -5,6 +5,7 @@ import Pricing from "./components/Pricing"; // Create this new component
 import Navbar from './components/Navbar';
 import HeroBanner from './components/Layouts/HeroBanner';
 import AppointmentForm from './components/AppointmentForm';
+import AboutPage from './components/AboutPage';
 
 function App() {
   return (
@@ -44,6 +45,12 @@ function App() {
         <Route path="/appointmentForm" element={
           <>
            <AppointmentForm />
+            <Footer />
+          </>
+        } />
+           <Route path="/about" element={
+          <>
+           <AboutPage />
             <Footer />
           </>
         } />
