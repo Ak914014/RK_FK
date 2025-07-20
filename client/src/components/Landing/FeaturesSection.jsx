@@ -1,4 +1,8 @@
 import img from "../../assets/img.svg";
+import highlights from "../../assets/json/highlights.json"; 
+import services from "../../assets/json/services.json"; 
+import workflow from "../../assets/json/workflow.json"; 
+
 import { IoCallOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 const FeaturesSection = () => (
@@ -15,28 +19,7 @@ const FeaturesSection = () => (
       various fields, ensuring your essay receives specialized attention.
     </p>
     <div className="grid md:grid-cols-4 gap-6">
-      {[
-        {
-          title: "Expert Editing",
-          description:
-            "Our team comprises experienced editors with advanced degrees in diverse academic disciplines.",
-        },
-        {
-          title: "Unique Brainstorming",
-          description:
-            "We Brainstorm and come up with different ideas tailored for that student",
-        },
-        {
-          title: "Fast Turnaround",
-          description:
-            "We offer quick turnaround times to meet your deadlines without compromising quality.",
-        },
-        {
-          title: "Confidentiality",
-          description:
-            "Your privacy is our priority. We ensure complete confidentiality of your documents.",
-        },
-      ].map((feature, idx) => (
+      {highlights.map((feature, idx) => (
         <div
           key={idx}
           className="bg-[#FFFAF0] border-[#E5A000] px-4 py-6 border rounded-xl"
