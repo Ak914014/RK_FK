@@ -3,20 +3,23 @@ import img4 from "../../assets/img/background.jpg";
 import paper from "../../assets/img/paper.png";
 import ServicesSection from "../ServicesSection";
 import { IoCallOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
-
-const content = {
-  "header": "College Application Essay Editing and Proofreading Services",
-  "subheader": "Your essay's represent you. We will make sure you standout.",
-  "sectionTitle": "Why Choose Us?",
-  "topic": "College Application",
-  "description": [
-    "There are hundreds of candidates applying to the same college, so you should submit a competitive package of documents and edit your essay thoroughly.",
-    "College essay editor from RK Editing knows how to get beyond your transcript and let the admission officer realize why you should be accepted over other qualified applicants. With editorial help, you'll show why you deserve a spot in next year's class."
-  ]
-};
+import { Link, useLocation } from "react-router-dom";
+import contentData from "../../assets/json/content.json"; 
 
 const HeroBanner = () => {
+  const location = useLocation();
+  
+  const getProgramContent = () => {
+    const path = location.pathname.toLowerCase();
+    if (path === "/college") return contentData.college;
+    if (path === "/mba") return contentData.mba;
+    if (path === "/graduate") return contentData.graduate || contentData.default; 
+    if (path === "/medical") return contentData.medical || contentData.default; 
+    return contentData.default; 
+  };
+
+  const content = getProgramContent();
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,9 +27,9 @@ const HeroBanner = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        when: "beforeChildren"
-      }
-    }
+        when: "beforeChildren",
+      },
+    },
   };
 
   const itemVariants = {
@@ -36,9 +39,9 @@ const HeroBanner = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -55,20 +58,20 @@ const HeroBanner = () => {
         <div className="absolute w-full inset-0 bg-gradient-to-r from-white/80 to-amber-50/80 z-0" />
         
         {/* Content */}
-        <motion.div 
+        <motion.div
           className="relative flex flex-col text-[#374151] px-6 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.h1 
+          <motion.h1
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl leading-tight font-bold mb-6 text-gray-900"
           >
             {content.header}
           </motion.h1>
           
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-xl md:text-2xl font-medium text-gray-700 mb-8"
           >
@@ -76,10 +79,7 @@ const HeroBanner = () => {
           </motion.p>
           
           {/* CTA Button */}
-          <motion.div 
-            variants={itemVariants}
-            className="mt-6"
-          >
+          <motion.div variants={itemVariants} className="mt-6">
             <Link
               to="/appointmentForm"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-200/50"
@@ -92,7 +92,7 @@ const HeroBanner = () => {
       </motion.section>
 
       {/* Why Choose Us Section with animated background */}
-      <motion.section 
+      <motion.section
         className="relative overflow-hidden py-16 px-6 md:py-20 md:px-12 lg:px-20"
         initial="hidden"
         whileInView="visible"
@@ -100,38 +100,35 @@ const HeroBanner = () => {
         variants={containerVariants}
       >
         {/* Animated background elements */}
-        <motion.div 
+        <motion.div
           className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-100 to-amber-50 rounded-full opacity-30 translate-x-1/2 -translate-y-1/2"
           animate={{
             scale: [1, 1.1, 1],
-            opacity: [0.3, 0.4, 0.3]
+            opacity: [0.3, 0.4, 0.3],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         
-        <motion.div 
+        <motion.div
           className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tl from-amber-100 to-amber-50 rounded-full opacity-20 -translate-x-1/2 translate-y-1/2"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2]
+            opacity: [0.2, 0.3, 0.2],
           }}
           transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 2,
           }}
         />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            variants={itemVariants}
-          >
+          <motion.div className="text-center mb-16" variants={itemVariants}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-amber-600">
               {content.sectionTitle}
             </h2>
@@ -139,16 +136,13 @@ const HeroBanner = () => {
           </motion.div>
 
           <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <motion.div 
-              className="lg:w-1/2"
-              variants={itemVariants}
-            >
+            <motion.div className="lg:w-1/2" variants={itemVariants}>
               <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                 {content.topic}
               </h3>
               
               {content.description.map((paragraph, index) => (
-                <motion.p 
+                <motion.p
                   key={index}
                   className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed"
                   variants={itemVariants}
@@ -158,26 +152,20 @@ const HeroBanner = () => {
                 </motion.p>
               ))}
               
-                <motion.div 
-            variants={itemVariants}
-            className="mt-6"
-          >
-            <Link
-              to="/appointmentForm"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-200/50"
-            >
-              <IoCallOutline className="text-2xl" />
-              Free 30-minute Consultation Call
-            </Link>
-          </motion.div>
+              <motion.div variants={itemVariants} className="mt-6">
+                <Link
+                  to="/appointmentForm"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-200/50"
+                >
+                  <IoCallOutline className="text-2xl" />
+                  Free 30-minute Consultation Call
+                </Link>
+              </motion.div>
             </motion.div>
 
-            <motion.div 
-              className="lg:w-1/2 flex justify-center"
-              variants={itemVariants}
-            >
+            <motion.div className="lg:w-1/2 flex justify-center" variants={itemVariants}>
               <div className="relative">
-                <motion.div 
+                <motion.div
                   className="absolute -inset-4 bg-gradient-to-br from-amber-200 to-amber-300 rounded-2xl transform rotate-2 z-0"
                   animate={{
                     rotate: [2, -1, 2],
@@ -185,13 +173,13 @@ const HeroBanner = () => {
                   transition={{
                     duration: 8,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 />
-                <img 
-                  src={paper} 
-                  className="relative z-10 max-h-[500px] object-contain rounded-lg shadow-xl" 
-                  alt="Paper sample" 
+                <img
+                  src={paper}
+                  className="relative z-10 max-h-[500px] object-contain rounded-lg shadow-xl"
+                  alt="Paper sample"
                 />
               </div>
             </motion.div>

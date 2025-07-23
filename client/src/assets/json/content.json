@@ -1,0 +1,43 @@
+
+{
+  "college": {
+    "header": "College Application Essay Editing and Proofreading Services",
+    "subheader": "Your essay’s represent you. We will make sure you standout.",
+    "sectionTitle": "Why Choose Us?",
+    "topic": "College Application",
+    "description": [
+      "There are hundreds of candidates applying to the same college, so you should submit a competitive package of documents and edit your essay thoroughly.",
+      "College essay editor from RK Editing knows how to get beyond your transcript and let the admission officer realize why you should be accepted over other qualified applicants. With editorial help, you’ll show why you deserve a spot in next year’s class."
+    ]
+  },
+  "mba": {
+    "header": "MBA Essay Editing Service That Will Increase Your Enrollment Chances",
+    "subheader": "Your essay’s represent you. We will make sure you standout.",
+    "sectionTitle": "Why Choose Us?",
+    "topic": "MBA Application",
+    "description": [
+      "Your MBA application essay should be concise and convincing. Why do you want an MBA, and why do you want to attend particular school? You have to answer these questions; and we can help you craft a catchy essay that hits all the key points.",
+      "You will need to show the admissions committee your genuine value to the program, being specific and clear about it. RK Editing will make sure each word in your essay counts."
+    ]
+  },
+  "graduate": {
+    "header": "Graduate School Essay & Personal Statement Editing Service",
+    "subheader": "Your essay’s represent you. We will make sure you standout.",
+    "sectionTitle": "Why Choose Us?",
+    "topic": "Graduate Application",
+    "description": [
+      "Professional help with graduate school essay may be essential, as you need to submit killer admission documents.",
+      "You may have a CV that’s overflowing with experiences to include in your graduate school application, but crafting a focused essay can be challenging. Graduate school admission essay editing by RK Editing can help you tell your story. Our editors will make your writing clear and concise so that you can earn a coveted seat in the class."
+    ]
+  },
+  "medical": {
+    "header": "Medical School Essay & Personal Statement Editing Service",
+    "subheader": "Your essay’s represent you. We will make sure you standout. We help in all residency programs like Dental, Nursing, Optometry, Pharmacy, Veterinary, Public Health ",
+    "sectionTitle": "Why Choose Us?",
+    "topic": "Med School Application",
+    "description": [
+      "Application to medical school requires a huge investment and brainstorming, so your personal statement shouldn’t be taken lightly. If you need help, try our med school personal statement editing service.",
+      "RK Editing medical school advisors have edited countless medical application essays, so they can help you craft an essay that goes beyond why you want to be a doctor, and gets at the heart of why you will be successful in the medical field."
+    ]
+  }
+}

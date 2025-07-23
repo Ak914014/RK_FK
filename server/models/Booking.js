@@ -6,6 +6,7 @@ const bookingSchema = new mongoose.Schema({
   query: String,
   year: Number,
   month: String,
+  day: Number, 
   time: String,
   createdAt: {
     type: Date,

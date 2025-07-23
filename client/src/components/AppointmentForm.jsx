@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BsFillInfoCircleFill } from 'react-icons/bs';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BsFillInfoCircleFill, BsArrowLeft } from 'react-icons/bs';
+import { FiCalendar, FiClock, FiMail, FiUser, FiMessageSquare } from 'react-icons/fi';
 import { bookAppointment, resetBookingState } from '../Redux/slices/bookingSlice';
 import img3 from '../assets/img/Legal.svg';
 
 const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState('9:30');
+  const [selectedTime, setSelectedTime] = useState('9:30 AM');
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [query, setQuery] = useState('');
+  const [formStep, setFormStep] = useState(1);
 
   const dispatch = useDispatch();
   const { loading, error, success, bookingDetails } = useSelector((state) => state.booking);
@@ -21,8 +24,8 @@ const AppointmentForm = () => {
     'July', 'August', 'September', 'October', 'November', 'December',
   ];
 
-  const years = Array.from({ length: 50 }, (_, i) => 2000 + i);
-  const times = Array(9).fill('9:30');
+  const years = Array.from({ length: 5 }, (_, i) => new Date().getFullYear() + i);
+  const times = ['9:30 AM', '10:30 AM', '11:30 AM', '1:30 PM', '2:30 PM', '3:30 PM', '4:30 PM', '5:30 PM'];
 
   const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
   const getStartDay = (month, year) => {
@@ -34,184 +37,366 @@ const AppointmentForm = () => {
   const startDay = getStartDay(month, year);
   const daysArray = [...Array(startDay).fill(null), ...Array(daysInMonth).fill(null).map((_, i) => i + 1)];
 
-  const handleSubmit = () => {
-    if (!name || !email || !query || !selectedDate || !selectedTime) {
-      alert('Please fill all fields and select a date and time.');
-      return;
-    }
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (!name || !email || !query || !selectedDate || !selectedTime) {
+    alert('Please fill all fields and select a date and time.');
+    return;
+  }
 
-    const bookingData = {
-      name,
-      email,
-      query,
-      year,
-      month: months[month],
-      time: selectedTime,
-    };
-
-    dispatch(bookAppointment(bookingData));
+  const bookingData = {
+    name,
+    email,
+    query,
+    year,
+    month: months[month], 
+    day: selectedDate,  
+    time: selectedTime,
   };
 
-  useEffect(() => {
-    if (success) {
-      alert('Booking confirmed! Check your email.');
-      setEmail('');
-      setName('');
-      setQuery('');
-      setSelectedDate(null);
-      setSelectedTime('9:30');
-      dispatch(resetBookingState());
+  dispatch(bookAppointment(bookingData));
+};
+
+useEffect(() => {
+  if (success && bookingDetails?.join_url) {
+    alert(`Booking confirmed! Check your email for details. Zoom Link: ${bookingDetails.join_url}`);
+    resetForm();
+    dispatch(resetBookingState());
+  }
+  if (error) {
+    alert(`Error: ${error}`);
+    dispatch(resetBookingState());
+  }
+}, [success, error, dispatch, bookingDetails]);
+  const resetForm = () => {
+    setEmail('');
+    setName('');
+    setQuery('');
+    setSelectedDate(null);
+    setSelectedTime('9:30 AM');
+    setFormStep(1);
+  };
+
+  const nextStep = () => {
+    if (formStep < 3) setFormStep(formStep + 1);
+  };
+
+  const prevStep = () => {
+    if (formStep > 1) setFormStep(formStep - 1);
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        when: "beforeChildren"
+      }
     }
-    if (error) {
-      alert(`Error: ${error}`);
-      dispatch(resetBookingState());
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
     }
-  }, [success, error, dispatch]);
+  };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-10 flex flex-col items-center font-sans">
-      <div className="bg-[#FFFAF0] w-full px-6 rounded-3xl flex justify-between items-center">
-        <div>
-          <h1 className="text-5xl mb-8 font-semibold text-[#2B3B47]">Hello, Let’s Talk!</h1>
-          <p className="text-2xl mb-8 w-4/5 text-[#2B3B47] mt-2">
-            Schedule a 30 min one-to-one Appointment to discuss which plan is best for you.
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-screen bg-white px-4 py-10 flex flex-col items-center font-sans"
+    >
+      {/* Header Section */}
+      <motion.div 
+        className="bg-[#FFFAF0] w-full max-w-6xl px-6 py-8 rounded-3xl flex flex-col md:flex-row justify-between items-center mb-10 shadow-sm"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={itemVariants} className="md:w-2/3">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2B3B47] mb-4">
+            Hello, Let's Talk!
+          </h1>
+          <p className="text-lg md:text-xl text-[#2B3B47] mb-4">
+            Schedule a 30 min one-to-one appointment to discuss which plan is best for you.
           </p>
-          <div className="text-xl mt-2 flex items-center text-[#828282]">
-            <BsFillInfoCircleFill className="text-2xl mr-2" />
-            This is optional but highly recommended!
+          <div className="flex items-center text-[#828282]">
+            <BsFillInfoCircleFill className="text-xl mr-2 text-amber-500" />
+            <span>This is optional but highly recommended!</span>
           </div>
-        </div>
-        <div className="hidden md:block">
-          <img src={img3} alt="Legal" className="w-90 rounded-full object-contain" />
-        </div>
-      </div>
+        </motion.div>
+        <motion.div 
+          variants={itemVariants}
+          className="hidden md:block"
+          whileHover={{ scale: 1.05 }}
+        >
+          <img src={img3} alt="Legal" className="w-64 h-64 rounded-full object-cover shadow-lg" />
+        </motion.div>
+      </motion.div>
 
-      <div className="w-full max-w-2xl mt-10">
-        <h2 className="text-2xl font-bold text-[#2B3B47] mb-4">Choose a Date</h2>
-        <div className="bg-white p-6 rounded-xl shadow">
-          <div className="flex gap-4 mb-4">
-            <select
-              value={month}
-              onChange={(e) => setMonth(parseInt(e.target.value))}
-              className="border border-gray-300 px-3 py-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              {months.map((name, idx) => (
-                <option key={idx} value={idx}>{name}</option>
-              ))}
-            </select>
-            <select
-              value={year}
-              onChange={(e) => setYear(parseInt(e.target.value))}
-              className="border border-gray-300 px-3 py-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              {years.map((yr) => (
-                <option key={yr} value={yr}>{yr}</option>
-              ))}
-            </select>
-          </div>
-          <div className="grid grid-cols-7 gap-2 text-center text-sm text-gray-500 mb-2">
-            {['M', 'Tu', 'W', 'Th', 'F', 'Sa', 'Su'].map((d, i) => (
-              <div key={i} className="font-bold text-gray-700">{d}</div>
-            ))}
-            {daysArray.map((day, index) => (
-              <div
-                key={index}
-                onClick={() => day && setSelectedDate(day)}
-                className={`py-1.5 rounded-full cursor-pointer ${
-                  selectedDate === day
-                    ? 'bg-orange-500 text-white'
-                    : day
-                    ? 'hover:bg-orange-100'
-                    : ''
-                }`}
-              >
-                {day || ''}
+      {/* Form Steps */}
+      <div className="w-full max-w-2xl mb-8">
+        <div className="flex justify-between items-center mb-6">
+          {[1, 2, 3].map((step) => (
+            <React.Fragment key={step}>
+              <div className="flex flex-col items-center">
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                  formStep >= step ? 'bg-amber-500 text-white' : 'bg-gray-200 text-gray-600'
+                } font-semibold`}>
+                  {step}
+                </div>
+                <span className={`text-sm mt-2 ${
+                  formStep >= step ? 'text-amber-600 font-medium' : 'text-gray-500'
+                }`}>
+                  {step === 1 ? 'Date' : step === 2 ? 'Time' : 'Details'}
+                </span>
               </div>
-            ))}
-          </div>
-          {selectedDate && (
-            <p className="mt-2 text-sm text-gray-600 text-center">
-              Selected: {selectedDate} {months[month]} {year}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className="w-full max-w-2xl mt-10">
-        <h2 className="text-2xl font-bold text-[#2B3B47] mb-4">Pick a time</h2>
-        <div className="bg-white p-6 rounded-xl shadow grid grid-cols-3 sm:grid-cols-4 gap-4 text-sm">
-          {times.map((time, index) => (
-            <button
-              key={index}
-              className={`py-2 rounded-md ${
-                selectedTime === time && index === 4
-                  ? 'bg-orange-500 text-white'
-                  : 'bg-orange-50 text-gray-800 hover:bg-orange-100'
-              }`}
-              onClick={() => setSelectedTime(time)}
-            >
-              {time}
-            </button>
+              {step < 3 && (
+                <div className={`h-1 flex-1 mx-2 ${formStep > step ? 'bg-amber-500' : 'bg-gray-200'}`}></div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>
 
-      <div className="w-full max-w-2xl mt-10 space-y-6">
-        <div>
-          <label className="text-2xl font-bold text-[#2B3B47]">Enter Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="youremail@gmail.com"
-            className="w-full border-2 border-orange-500 rounded-full px-6 py-3 mt-2 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-        </div>
-        <div>
-          <label className="text-2xl font-bold text-[#2B3B47]">Enter Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Jane"
-            className="w-full border-2 border-orange-500 rounded-full px-6 py-3 mt-2 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-        </div>
-        <div>
-          <label className="text-2xl font-bold text-[#2B3B47]">Any Queries?</label>
-          <textarea
-            rows={5}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Hey, which plan is right for me?"
-            className="w-full border-2 border-orange-500 rounded-2xl px-6 py-3 mt-2 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
-          />
-        </div>
-        <div className="flex gap-6 justify-start">
-          <button
-            className="border border-orange-500 text-orange-500 px-6 py-2 rounded-full hover:bg-orange-100"
-            onClick={() => {
-              setEmail('');
-              setName('');
-              setQuery('');
-              setSelectedDate(null);
-              setSelectedTime('9:30');
-            }}
-          >
-            Back
-          </button>
-          <button
-            className={`bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
+      {/* Form Content */}
+      <form onSubmit={handleSubmit} className="w-full max-w-2xl">
+        <AnimatePresence mode="wait">
+          {formStep === 1 && (
+            <motion.div
+              key="step1"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 50, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-6 rounded-xl shadow-md mb-6"
+            >
+              <h2 className="text-2xl font-bold text-[#2B3B47] mb-6 flex items-center">
+                <FiCalendar className="mr-2 text-amber-500" /> Choose a Date
+              </h2>
+              <div className="flex gap-4 mb-6">
+                <select
+                  value={month}
+                  onChange={(e) => setMonth(parseInt(e.target.value))}
+                  className="flex-1 border-2 border-gray-200 px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                >
+                  {months.map((name, idx) => (
+                    <option key={idx} value={idx}>{name}</option>
+                  ))}
+                </select>
+                <select
+                  value={year}
+                  onChange={(e) => setYear(parseInt(e.target.value))}
+                  className="flex-1 border-2 border-gray-200 px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                >
+                  {years.map((yr) => (
+                    <option key={yr} value={yr}>{yr}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="grid grid-cols-7 gap-2 text-center text-sm text-gray-500 mb-4">
+                {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
+                  <div key={i} className="font-semibold text-gray-600 py-2">{d}</div>
+                ))}
+                {daysArray.map((day, index) => (
+                  <motion.div
+                    key={index}
+                    onClick={() => day && setSelectedDate(day)}
+                    whileHover={{ scale: day ? 1.05 : 1 }}
+                    className={`py-2 rounded-full cursor-pointer transition-all ${
+                      selectedDate === day
+                        ? 'bg-amber-500 text-white shadow-md'
+                        : day
+                        ? 'hover:bg-amber-100'
+                        : ''
+                    }`}
+                  >
+                    {day || ''}
+                  </motion.div>
+                ))}
+              </div>
+              {selectedDate && (
+                <p className="text-center text-amber-600 font-medium mt-4">
+                  Selected: {selectedDate} {months[month]} {year}
+                </p>
+              )}
+            </motion.div>
+          )}
+
+          {formStep === 2 && (
+            <motion.div
+              key="step2"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 50, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-6 rounded-xl shadow-md mb-6"
+            >
+              <h2 className="text-2xl font-bold text-[#2B3B47] mb-6 flex items-center">
+                <FiClock className="mr-2 text-amber-500" /> Pick a Time
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {times.map((time, index) => (
+                  <motion.button
+                    key={index}
+                    type="button"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`py-3 rounded-lg text-sm font-medium transition-all ${
+                      selectedTime === time
+                        ? 'bg-amber-500 text-white shadow-md'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                    onClick={() => setSelectedTime(time)}
+                  >
+                    {time}
+                  </motion.button>
+                ))}
+              </div>
+              {selectedTime && (
+                <p className="text-center text-amber-600 font-medium mt-4">
+                  Selected: {selectedTime}
+                </p>
+              )}
+            </motion.div>
+          )}
+
+          {formStep === 3 && (
+            <motion.div
+              key="step3"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 50, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-6 rounded-xl shadow-md mb-6"
+            >
+              <h2 className="text-2xl font-bold text-[#2B3B47] mb-6">Your Information</h2>
+              
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <div className="relative">
+                    <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="youremail@gmail.com"
+                      className="w-full border-2 border-gray-200 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <div className="relative">
+                    <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Jane Doe"
+                      className="w-full border-2 border-gray-200 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Your Questions</label>
+                  <div className="relative">
+                    <FiMessageSquare className="absolute left-3 top-4 text-gray-400" />
+                    <textarea
+                      rows={4}
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Tell us about your needs and any specific questions..."
+                      className="w-full border-2 border-gray-200 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-between mt-8">
+          <motion.button
+            type="button"
+            onClick={prevStep}
+            disabled={formStep === 1}
+            className={`flex items-center px-6 py-3 rounded-full border ${
+              formStep === 1 
+                ? 'border-gray-300 text-gray-400 cursor-not-allowed' 
+                : 'border-amber-500 text-amber-500 hover:bg-amber-50'
             }`}
-            onClick={handleSubmit}
-            disabled={loading}
+            whileHover={formStep === 1 ? {} : { scale: 1.03 }}
+            whileTap={formStep === 1 ? {} : { scale: 0.98 }}
           >
-            {loading ? 'Submitting...' : 'Continue'}
-          </button>
+            <BsArrowLeft className="mr-2" /> Back
+          </motion.button>
+
+          {formStep < 3 ? (
+            <motion.button
+              type="button"
+              onClick={nextStep}
+              disabled={!selectedDate && formStep === 1 || !selectedTime && formStep === 2}
+              className={`px-8 py-3 rounded-full ${
+                (!selectedDate && formStep === 1) || (!selectedTime && formStep === 2)
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : 'bg-amber-500 text-white hover:bg-amber-600'
+              }`}
+              whileHover={
+                (!selectedDate && formStep === 1) || (!selectedTime && formStep === 2) 
+                  ? {} 
+                  : { scale: 1.03 }
+              }
+              whileTap={
+                (!selectedDate && formStep === 1) || (!selectedTime && formStep === 2) 
+                  ? {} 
+                  : { scale: 0.98 }
+              }
+            >
+              Next Step
+            </motion.button>
+          ) : (
+            <motion.button
+              type="submit"
+              disabled={loading}
+              className={`px-8 py-3 rounded-full bg-amber-500 text-white hover:bg-amber-600 ${
+                loading ? 'opacity-70 cursor-not-allowed' : ''
+              }`}
+              whileHover={loading ? {} : { scale: 1.03 }}
+              whileTap={loading ? {} : { scale: 0.98 }}
+            >
+              {loading ? 'Booking...' : 'Confirm Appointment'}
+            </motion.button>
+          )}
         </div>
-      </div>
-    </div>
+      </form>
+
+      {/* Success Message */}
+      {success && (
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg"
+        >
+          Appointment booked successfully!
+        </motion.div>
+      )}
+    </motion.div>
   );
 };
 
