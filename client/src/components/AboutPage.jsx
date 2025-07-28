@@ -64,12 +64,45 @@ const AboutPage = () => {
           className="text-base sm:text-lg text-[#828282] mb-6 md:mb-8"
           variants={itemVariants}
         >
-          Meet Rubina, a passionate college admissions expert with a marketing
-          degree and a sharp eye for storytelling. With her unique motto, "I
-          market people on paper", she's been transforming student journeys
-          into powerful essays that open doors to dream colleges. Whether it's
-          crafting compelling narratives or highlighting overlooked
-          achievements, Rubina knows how to make every word count.
+          Meet Rubina,Rubina, a passionate expert with a degree in marketing management
+          and a sharp eye for storytelling. She takes pride in her meticulous editing 
+          skills and being detail-oriented. Whether it's crafting compelling narratives 
+          or highlighting overlooked achievements, Rubina knows how to make every word count.
+          Having 26 years of experience, her expertise and skills will make your compositions 
+          shine. With her unique motto, "I market people on paper" , she has
+          been transforming students journeys' into powerful essays, paving the
+          way to dream colleges and univerisities.
+          <br></br>
+          <h1><b>Why Choose RK Editing?</b></h1>
+          An editor plays a critical role in refining a student's personal statement or application essay to make it as polished, engaging, and persuasive as possible. Besides grammar, syntax, and punctuation there are core elements an editor will provide guidance for.
+          <br></br>
+          1.⁠Polishing the writing style:
+          <br></br>
+              *An editor helps with clarity and flow by ensuring the essay is clear, cohesive, and well-organized.
+              <br></br>
+              *They help maintain a consistent tone and voice making sure it comes across as genuine.
+              <br>
+              </br>
+          2.⁠ ⁠Ensuring relevance and focus:
+          <br>
+              </br>
+              *An editor can help a student stay on topic, making sure that every part of the essay is relevant to the application and serves a clear purpose.
+              <br>
+              </br>
+          3.⁠ ⁠Imoroving the structure:
+          <br>
+              </br>
+              *Editors may suggest cutting out unnecessary details or tangents
+              <br>
+              </br>
+              *Reorganizing sections, breaking up long paragraphs, or adding transitions might also be suggested.
+              <br>
+              </br>
+              *They make sure word count requirements are met and help students stay within the limit.
+              <br>
+              </br>
+              
+          Essentially, an editor helps refine, enhance, and optimize the essay, ensuring that it stands out in a competitive application pool while staying true to the applicant's voice.
         </motion.p>
         
         <motion.div variants={itemVariants}>

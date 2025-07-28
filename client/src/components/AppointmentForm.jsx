@@ -290,7 +290,7 @@ useEffect(() => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="youremail@gmail.com"
+                      placeholder="editingbyrks@gmail.com"
                       className="w-full border-2 border-gray-200 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                       required
                     />

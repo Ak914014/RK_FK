@@ -69,18 +69,22 @@ const HeroSection = () => {
           >
             <motion.div variants={itemVariants}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
-                With <span className="text-amber-600">Expert Editing</span> and{" "}
-                <span className="text-amber-600">Proofreading Services</span>{" "}
-                Elevate Your Personal Statement
+                 <span className="text-amber-600">Creating</span>,{" "}
+                <span className="text-amber-600">Empowering</span>{" "}
+                and <span className="text-amber-600">Building</span>{" "}
+                Futures since <span className="text-amber-600">1999</span>{" "}
+            
               </h1>
               
               <motion.p 
                 className="text-lg text-gray-600 leading-relaxed mt-6 max-w-2xl"
                 variants={itemVariants}
               >
-                RuB's Editing's mission is to help you present the best version of yourself on paper. 
-                With years of experience in college admission essay editing, we shape essays that 
-                highlight your strengths while maintaining your authentic voice.
+                RK Editing's mission is to help you present the best version of yourself on paper.  
+                With years of experience in editing college admission essays and personal statements for 
+                medical residency, RK Editing shapes the essays that highlight your strenghts while maintaining
+                your authentic voice. 
+
               </motion.p>
               
               <motion.div variants={itemVariants}>

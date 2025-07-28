@@ -64,12 +64,14 @@ const AboutSection = () => {
           className="text-base sm:text-lg text-[#828282] mb-6 md:mb-8"
           variants={itemVariants}
         >
-          Meet Rubina, a passionate college admissions expert with a marketing
-          degree and a sharp eye for storytelling. With her unique motto, "I
-          market people on paper", she's been transforming student journeys
-          into powerful essays that open doors to dream colleges. Whether it's
-          crafting compelling narratives or highlighting overlooked
-          achievements, Rubina knows how to make every word count.
+          
+          Meet Rubina, a passionate college admissions expert with a degree in marketing management
+          and a sharp eye for storytelling. She takes pride 
+          in her meticulous editing skills and being detail-oriented.
+          Whether it's crafting compelling narratives or highlighting overlooked achievements, 
+          Rubina knows how to make every word count. Having 26 years of experience, her expertise 
+          and skills will make your compositions shine. With her unique motto, "I market people on paper", she has
+          been transforming students journeys' into powerful essays, paving the way to dream colleges and univerisities
         </motion.p>
         
         <motion.div variants={itemVariants}>
