@@ -60,28 +60,25 @@ const Footer = () => {
             Let's Start the <span className="text-amber-600">Journey</span> Today!
           </motion.h2>
 
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 w-full md:w-1/2"
-            variants={itemVariants}
-          >
-            <motion.button 
-              className="bg-[#E17100] hover:bg-[#d45a07] text-white px-8 py-4  text-lg md:text-xl rounded-2xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View Pricing
-            </motion.button>
-             <motion.div variants={itemVariants}>
-          <Link
-            to="/appointmentForm"
-              className="bg-white   hover:bg-gray-100 border border-gray-200 text-gray-800 px-8 py-4  text-lg md:text-xl rounded-2xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Consultation Call
-              </Link>
-        </motion.div>
-          </motion.div>
+        <motion.div 
+  className="flex flex-col sm:flex-row gap-4 w-full md:w-1/2"
+  variants={itemVariants}
+>
+  <motion.button 
+    className="bg-[#E17100] hover:bg-[#d45a07] text-white px-8 py-4 text-lg md:text-xl rounded-2xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+    whileHover={{ y: -3 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    View Pricing
+  </motion.button>
+  <motion.button
+    className="bg-white hover:bg-gray-100 border border-gray-200 text-gray-800 px-8 py-4 text-lg md:text-xl rounded-2xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+    whileHover={{ y: -3 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <Link to="/appointmentForm">Consultation Call</Link>
+  </motion.button>
+</motion.div>
         </div>
       </motion.div>
 

@@ -11,3 +11,7 @@ export const createBooking = async (bookingData) => {
   const response = await api.post('/book', bookingData);
   return response.data;
 };
+export const createCheckoutSession = async (items) => {
+  const response = await api.post('/payment/create-checkout-session', { items });
+  return response.data; 
+};

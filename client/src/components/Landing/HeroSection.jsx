@@ -83,14 +83,12 @@ const HeroSection = () => {
                 highlight your strengths while maintaining your authentic voice.
               </motion.p>
               
-              <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="mt-6">
                 <Link
                   to="/appointmentForm"
-                  className="mt-8 inline-flex items-center gap-3 bg-amber-600 hover:bg-amber-700 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-100/50"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-md hover:shadow-amber-200/50"
                 >
-                  <IoCallOutline className="text-xl" />
+                  <IoCallOutline className="text-2xl" />
                   Free 30-minute Consultation Call
                 </Link>
               </motion.div>
