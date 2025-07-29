@@ -8,16 +8,16 @@
   {
     "icon": "MdOutlineQuestionMark",
     "title": "Brainstorming",
-    "description": "Enhance clarity, coherence, and argumentation with insightful feedback on content and structure."
+    "description": "Get help developing strong ideas, themes, and outlines before you start writing."
   },
   {
     "icon": "IoSearchOutline",
-    "title": "Content Editing",
-    "description": "Enhance clarity, coherence, and argumentation with insightful feedback on content and structure."
+    "title": "Content Editing and Formatting",
+    "description": "Improve clarity and structure with feedback, and ensure proper formatting (MLA, APA, Chicago)."
   },
   {
     "icon": "PiTextBBold",
-    "title": "Formatting",
-    "description": "Ensure your essay adheres to specific formatting guidelines (e.g., MLA, APA, Chicago)."
+    "title": "Constructive Critiquing",
+    "description": "Refine arguments, structure, and clarity through targeted, constructive analysis."
   }
 ]

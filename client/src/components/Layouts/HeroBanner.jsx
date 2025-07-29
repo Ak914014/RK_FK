@@ -100,7 +100,7 @@ const HeroBanner = () => {
       >
         {/* Animated background elements */}
         <motion.div
-          className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-100 to-amber-50 rounded-full opacity-30 translate-x-1/2 -translate-y-1/2"
+          className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#F5DBAE] to-amber-600 rounded-full opacity-30 translate-x-1/2 -translate-y-1/2"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.4, 0.3],
@@ -113,7 +113,7 @@ const HeroBanner = () => {
         />
         
         <motion.div
-          className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tl from-amber-100 to-amber-50 rounded-full opacity-20 -translate-x-1/2 translate-y-1/2"
+          className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tl from-[#F5DBAE] to-amber-600 rounded-full opacity-20 -translate-x-1/2 translate-y-1/2"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.2, 0.3, 0.2],

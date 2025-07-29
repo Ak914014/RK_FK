@@ -26,6 +26,18 @@ const FeaturesSection = () => {
       }
     }
   };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
 
   return (
     <section className="px-6 sm:px-12 lg:px-20 py-16 bg-white">
@@ -78,13 +90,10 @@ const FeaturesSection = () => {
             </motion.div>
           ))}
         </motion.div>
-        <motion.div 
-          className="flex justify-center"
-          variants={item}
-        >
+      <motion.div variants={itemVariants}>
           <Link
             to="/appointmentForm"
-            className="inline-flex items-center gap-3 bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-100/50"
+            className="inline-flex items-center gap-3 bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-100/50"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

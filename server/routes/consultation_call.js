@@ -13,7 +13,7 @@ const router = express.Router();
 
 // This section will help you get a list of all the consultation_call.
 router.get("/", async (req, res) => {
-  let collection = await db.collection("consultation_call");
+  let collection = await db.collection("customer_info.consultation_call");
   let results = await collection.find({}).toArray();
   res.send(results).status(200);
 });
@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
       query: req.body.query,
 
     };
-    let collection = await db.collection("consultation_call");
+    let collection = await db.collection("customer_info.consultation_call");
     let result = await collection.insertOne(newDocument);
     res.send(result).status(201);
   } catch (err) {
